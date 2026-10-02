@@ -4,6 +4,7 @@
 %global with_vmware 1
 %global with_vulkan_hw 1
 %global with_vdpau 1
+%global with_d3d12 1
 %if !0%{?rhel}
 %global with_r300 1
 %global with_r600 1
@@ -719,13 +720,13 @@ popd
 %{_libdir}/dri/i915_dri.so
 %endif
 %endif
+%if 0%{?with_d3d12}
+%{_libdir}/dri/d3d12_dri.so
+%endif
 %ifarch %{arm} aarch64
 %if 0%{?with_asahi}
 %{_libdir}/dri/apple_dri.so
 %{_libdir}/dri/asahi_dri.so
-%endif
-%if 0%{?with_d3d12}
-%{_libdir}/dri/d3d12_dri.so
 %endif
 %{_libdir}/dri/ingenic-drm_dri.so
 %{_libdir}/dri/imx-drm_dri.so
@@ -898,7 +899,7 @@ popd
 * Tue Jan 6 2026 Jocelyn Falempe <jfalempe@redhat.com - 25.2.7-2
 - Resolves: https://issues.redhat.com/browse/RHEL-105157
 
-* Wed Nov 28 2025 Mika Penttilä <mpenttil@redhat.com> - 25.2.7-1
+* Fri Nov 28 2025 Mika Penttilä <mpenttil@redhat.com> - 25.2.7-1
 - Resolves: https://issues.redhat.com/browse/RHEL-132415
 
 * Tue Nov 18 2025 Mika Penttilä José Expósito <jexposit@redhat.com> - 25.2.5-2
